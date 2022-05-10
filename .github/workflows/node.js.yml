@@ -29,5 +29,9 @@ jobs:
         cache: yarn
     - run: yarn install --frozen-lockfile --prefer-offline
     - run: yarn run build
+    - name: Build all projects
+      run: |
+        yarn workspaces run build
+        yarn workspaces run build-storybook
     - run: yarn lint
     - run: yarn test
