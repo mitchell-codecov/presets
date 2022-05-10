@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -15,9 +15,12 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      max-parallel: 6
       matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version:
+        - 12
+        - 14
+        - 16
 
     steps:
     - uses: actions/checkout@v3
